@@ -1,3 +1,29 @@
+class Card{
+    constructor() {
+        this.Value = GetValue();
+        this.Suit = GetSuit();
+        this.Face = GetFace();
+        this.Path = GetPath();
+    }
+    GetValue()
+    {
+        return DeckValues.pop();
+    }
+
+    GetSuit(){
+
+    }
+
+    GetFace(){
+
+    }
+
+    GetPath(){
+
+    }
+}
+
+
 function ShuffleRandom(arr){
     let rnd = Math.floor(Math.random() * 10) + 1;
     for (let i=0; i < rnd; i++){
