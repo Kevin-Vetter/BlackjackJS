@@ -1,6 +1,11 @@
-<head>
-    <script type="module" >import * as app from './app.js'; window.Hit = Hit()</script>
-</head>
 <body>
-     <button onclick="Hit()">Click</button>
+    <button onclick="window.Hit()">Click</button>
 </body>
+
+<script type="module" >
+    import {Hit as imp} from './app.js';
+
+    window.Hit = function Hit(){
+        imp();
+    }
+</script>
