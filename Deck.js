@@ -1,7 +1,6 @@
 var Suits = ['D','H','C','S'];
 var Faces = ['2','3','4','5','6','7','8','9','10','J','D','K','A',];
 var Values = [2,3,4,5,6,7,8,9,10,10,10,10,11];
-var Aces = ['AD','AH','AC','AS'];
 class Card{
     constructor(suit, face, value) {
         this.Id = face + suit;
@@ -12,6 +11,7 @@ class Card{
         return "/cards/" + this.Id + ".png";
     }
 }
+
 
 var Deck = function()
 {   
@@ -26,8 +26,16 @@ var Deck = function()
     deck = ShuffleRandom(deck);
     return deck;
 }();
+var Aces = function (){
+    let aces = []
+    Deck.forEach(card => {
+        if(card.Value == 11){
+            aces.push(card);
+        }
+    });
+    return aces;
+}();
 
- 
 function ShuffleRandom(arr){
     let rnd = Math.floor(Math.random() * 100) +1;
     for (let i=0; i < rnd; i++){
@@ -48,4 +56,4 @@ function Shuffle(arr){
     return shuffledArr;
 }
 
-export {Deck};
+export {Deck, Aces};
