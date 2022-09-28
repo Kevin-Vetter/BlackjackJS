@@ -12,7 +12,6 @@ class Card{
     }
 }
 
-
 var Deck = function()
 {   
     let deck = [];

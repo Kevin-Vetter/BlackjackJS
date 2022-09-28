@@ -32,7 +32,7 @@ export function Hit()
     PlayerHand.push(Deck.pop());
     PlayerScore = CheckScore(PlayerHand);
     console.log(PlayerHand)
-    CheckBust(PlayerHand);
+    console.log(CheckBust(PlayerHand));
     console.log(PlayerScore);
 }
 export function Stand(){
@@ -57,20 +57,27 @@ function CheckScore(hand){
         score += card.Value;
     });
     console.log('score:' + score)
-    if(score > 21 && CheckAces(hand)){
-        score -= 10;
-        console.log('ACE!')
+    if(score > 21){
+        for(let i = 0; i < AceCount(hand); i++) {   
+            score -= 10;
+            console.log('ACE!')
+            console.log('score:' + score)
+        }
     }
     return score;
 }
-function CheckAces(hand){
-    console.log('holup');
-    return hand.some(item => Aces.includes(item));
-}
+
+function AceCount(hand){
+    let aces = 0;
+    hand.forEach(card => {
+        if(Aces.includes(card)){
+            aces++;
+        }});
+    return aces;
+};
 
 
 console.log(DealerHand);
 console.log(PlayerHand);
 console.log(frmDeck);
-//console.log(Deck);
 console.log('fin');
