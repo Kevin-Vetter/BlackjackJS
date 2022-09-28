@@ -42,7 +42,6 @@ function ShuffleRandom(arr){
     }
     return arr;
 }
-
 function Shuffle(arr){
     let shuffledArr = [];
     let length = arr.length;
