@@ -1,5 +1,5 @@
 var Suits = ['D','H','C','S'];
-var Faces = ['2','3','4','5','6','7','8','9','10','J','D','K','A',];
+var Faces = ['2','3','4','5','6','7','8','9','10','J','Q','K','A',];
 var Values = [2,3,4,5,6,7,8,9,10,10,10,10,11];
 class Card{
     constructor(suit, face, value) {

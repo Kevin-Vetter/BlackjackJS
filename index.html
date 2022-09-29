@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Blackjack made in Javascript">
-        <title>Blackjack JS</title>
-    </head>
-    <body>
-        <div id="dealerCards"></div>
-        <button onclick="window.Hit()">Hit</button>
-        <button onclick="window.Stand()">Stand</button>
-        <div id="playerCards"></div>
-    </body>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blackjack made in Javascript">
+    <title>Blackjack JS</title>
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex align-items-center h-100 justify-content-center">
+    <div>
+        <div class="d-flex justify-content-center gap-3" id="dealerCards"></div>
+        <div class="d-flex justify-content-center"><span>Score: </span><span id="dealerScore">0</span></div>
+        <div class="d-flex justify-content-center gap-5">
+            <img class="rounded rounded-pill" id="btnHit" onclick="window.Hit()" src="./buttons/Hit.png">
+            <img class="rounded rounded-pill" id="btnStand" onclick="window.Stand()" src="./buttons/Stand.png">
+        </div>
+        <div>
+            <div class="d-flex justify-content-center"><span>Score: </span><span id="playerScore"></span></div>
+            <div class="d-flex justify-content-center gap-3" id="playerCards"></div>
+        </div>
+    </div>
+</body>
+
 </html>
-<script type="module" >
+<script type="module">
     import * as app from './app.js';
 
-    window.Hit = function Hit(){
+    window.Hit = function Hit() {
         app.Hit();
     }
-    window.Stand = function Stand(){
+    window.Stand = function Stand() {
         app.Stand();
+    }
+    window.New = function New() {
+        if (!app.RunningGame) {
+            location.reload();
+        }
     }
 </script>
