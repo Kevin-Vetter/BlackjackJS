@@ -9,8 +9,21 @@
     <link href="bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 
-<body class="d-flex align-items-center h-100 justify-content-center">
-    <div>
+<body class="d-flex fs-2 align-items-center h-100 justify-content-center">
+    
+    <div class="position-absolute text-center fs-2 top-50 start-50 translate-middle" id="endScreen" style="display:none;">
+        <br/>
+        <br/>
+        <span>You have </span><span id="result">none</span>
+        <br/>
+        <br/>
+        <img class="center" width="150px" height="150px" onclick="window.New()" src="/buttons/reload.png">
+        <span>Dealer Score: </span><span id="eds"></span>
+        <br>
+        <span>Player Score: </span><span id="eps"></span>
+
+    </div>
+    <div id="main">
         <div class="d-flex justify-content-center gap-3" id="dealerCards"></div>
         <div class="d-flex justify-content-center"><span>Score: </span><span id="dealerScore">0</span></div>
         <div class="d-flex justify-content-center gap-5">
@@ -40,3 +53,28 @@
         }
     }
 </script>
+<style>
+    .center{
+        display: block;
+        margin:0 auto;
+    }
+    #endScreen{
+        width: 65%;
+        height: 65%;
+        border: 3px solid black;
+        border-radius: 5px 5px 5px 5px ;
+    }
+    #endScreen :hover{cursor: pointer;}
+
+    .fade-in {
+	animation: fade-in 2s linear both;
+    }
+    @keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+</style>

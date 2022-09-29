@@ -3,6 +3,7 @@ import * as frmDck from './Deck.js';
 var Deck = frmDck.Deck;
 var Aces = frmDck.Aces;
 var DealerScore = 0;
+var PlayerScore = 0;
 var RunningGame = true;
 var StoredPath;
 // InitGame
@@ -48,7 +49,7 @@ function DealerPlay(){
         DrawCard('dealerCards',DealerHand);
         DealerScore = CheckScore(DealerHand);
     }
-    console.log('Dealer score:' + DealerScore);
+
     WinnerCheck();
 }
 function CheckBust(hand){
@@ -57,15 +58,11 @@ function CheckBust(hand){
 }
 function CheckScore(hand){
     let score = 0;
-    let aces = AceCount(hand);
     hand.forEach(card => {
         score += card.Value;
-        for(let i = 0; i < aces; i++) {   
-            if(score > 21){
+        if(score > 21){
+            if(FuckAce(hand)){   
                 score -= 10;
-                Aces.splice(Aces.findIndex(x => x.Id == card.Id),1);
-                card.Value = 1
-                aces--;
             }
         }
     });
@@ -75,30 +72,42 @@ function CheckScore(hand){
         UpdateScore('dealerScore',score);
     return score;
 }
-function AceCount(hand){
-    let aces = 0;
-    hand.forEach(card => {
+function FuckAce(hand){
+    for(let card of hand){
         if(Aces.includes(card)){
-            aces++;
-        }});
-    return aces;
+            Aces.splice(Aces.findIndex(x => x.Id == card.Id),1);
+            card.Value = 1;
+            return true;
+        }};
 }
 function WinnerCheck(){
-    let playerscore = CheckScore(PlayerHand);
-    let dealerscore = CheckScore(DealerHand);
+    RunningGame = false
+    PlayerScore = CheckScore(PlayerHand);
+    DealerScore = CheckScore(DealerHand);
     if(!CheckBust(PlayerHand) && CheckBust(DealerHand)){
-        console.log('Player Wins! DB');
+        EndGame('won');
     }
     else if(!CheckBust(DealerHand) && CheckBust(PlayerHand))
-        console.log('Player Lost! PB');
-    else if(!CheckBust(DealerHand) && dealerscore > playerscore)
-        console.log('Player Lost! HD');
-    else if(!CheckBust(PlayerHand) && playerscore > dealerscore)
-        console.log('Player Wins! HP')
-    else if(!CheckBust(PlayerHand) && playerscore == dealerscore)
-        console.log('Tied!');
+    EndGame('lost');
+    else if(!CheckBust(DealerHand) && DealerScore > PlayerScore)
+    EndGame('lost');
+    else if(!CheckBust(PlayerHand) && PlayerScore > DealerScore)
+    EndGame('won');
+    else if(!CheckBust(PlayerHand) && PlayerScore == DealerScore)
+    EndGame('tied');
 
 }
+
+function EndGame(state){
+    setTimeout(() => {
+
+        document.getElementById('endScreen').classList = 'position-absolute text-center fs-2 top-50 start-50 translate-middle fade-in';
+        document.getElementById('endScreen').style = 'backdrop-filter: blur(100px)';
+        document.getElementById('eds').innerText = DealerScore;
+        document.getElementById('eps').innerText = PlayerScore;
+        document.getElementById('result').innerText = state;}, 1500);
+}
+
 function UpdateScore(id,score){
     document.getElementById(id).innerText = score;
 }
@@ -114,13 +123,11 @@ export function Hit()
         DrawCard('playerCards',PlayerHand);
         if(CheckBust(PlayerHand))
         {
-            console.log('you have lost this game');
-            RunningGame = false;
+            WinnerCheck();
         }
         else if(PlayerHand.length >= 5)
         {
-            console.log('you have won this game')
-            RunningGame = false;
+            WinnerCheck();
         }
     }
 }
