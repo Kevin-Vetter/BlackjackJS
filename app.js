@@ -4,9 +4,34 @@ var Deck = frmDck.Deck;
 var Aces = frmDck.Aces;
 var DealerScore = 0;
 var PlayerScore = 0;
-var RunningGame = true;
+var RunningGame = false;
 var StoredPath;
-// InitGame
+var BetAmount = 0;
+var Balance = function(){
+        let decodedCookie = decodeURIComponent(document.cookie);
+        if(decodedCookie != ""){
+            let value = decodedCookie.split('=');
+            if(Number(value[1] < 10)){
+                return Number(2000);
+            }
+            return Number(value[1]);
+        }
+          return Number(2000);
+};
+
+function UpdateBalance(newBalance){
+    document.cookie = 'balance=' + newBalance;
+    document.getElementById('balance').innerText = newBalance;
+}
+
+export function Bet(amount){
+    if(amount <= Balance()){
+        BetAmount = amount;
+        document.getElementById('startScreen').style = 'display: none;';
+        RunningGame = true;
+    }
+}
+
 var PlayerHand = function() {
     let hand = []
     for (let i = 0; i < 2; i++) {
@@ -25,8 +50,10 @@ var DealerHand = function() {
     }
     return hand;
 }();
+
 StoredPath = DealerHand[0].Path;
 DealerHand[0].Path = '/cards/back.png'
+UpdateBalance(Balance());
 
 DrawCard('dealerCards',DealerHand);
 
@@ -86,15 +113,23 @@ function WinnerCheck(){
     DealerScore = CheckScore(DealerHand);
     if(!CheckBust(PlayerHand) && CheckBust(DealerHand)){
         EndGame('won');
+        UpdateBalance(Balance()+BetAmount);
     }
-    else if(!CheckBust(DealerHand) && CheckBust(PlayerHand))
-    EndGame('lost');
-    else if(!CheckBust(DealerHand) && DealerScore > PlayerScore)
-    EndGame('lost');
-    else if(!CheckBust(PlayerHand) && PlayerScore > DealerScore)
-    EndGame('won');
-    else if(!CheckBust(PlayerHand) && PlayerScore == DealerScore)
-    EndGame('tied');
+    else if(!CheckBust(DealerHand) && CheckBust(PlayerHand)){
+        EndGame('lost');
+        UpdateBalance(Balance()-BetAmount);    
+    }
+    else if(!CheckBust(DealerHand) && DealerScore > PlayerScore){
+        EndGame('lost');
+        UpdateBalance(Balance()-BetAmount);
+    }
+    else if(!CheckBust(PlayerHand) && PlayerScore > DealerScore){
+        EndGame('won');
+        UpdateBalance(Balance()+BetAmount);
+    }
+    else if(!CheckBust(PlayerHand) && PlayerScore == DealerScore){
+        EndGame('tied');
+    }
 
 }
 
@@ -135,8 +170,6 @@ export function Stand(){
     if(RunningGame){
         FlipCard();
         DealerPlay();
-        console.log(DealerHand);
-        console.log(PlayerHand);
         RunningGame = false;
     }
 }

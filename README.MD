@@ -1,72 +1,67 @@
-# TODO-Webapp
+# BlackjackJS
 
 ## Table of content
-* [Intro](#Intro)
-* [Instructions](#Instructions)
-* [Requirements](#Requirements)
-* [Tags](#Tags)
-* [Changelog](#Changelog)
-* [To-do](#To-do)
+- [BlackjackJS](#blackjackjs)
+  - [Table of content](#table-of-content)
+  - [Intro](#intro)
+  - [Instructions](#instructions)
+  - [Tags](#tags)
+  - [Changelog](#changelog)
+  - [To-do](#to-do)
 
 
 ## Intro
-ToDo-Webapp is a razor page web application, where  a user can create tasks with various priorities and deadlines 
+BlackjackJS is a game of classic blackjack made in Javascript(ECMA) & HTML.
 
 ## Instructions 
-Press the 'new' button on the page to get started, if you see no task, try using a different filter by clicking the buttons on the left 
+Press a bet button to start the game, if you can afford it. You will now be promted with two choices, Hit & Stand.
 
-## Requirements
+Hit: Will give you another card, but be careful! You lose, if your score reaches higer than 21!
+Stand: Your score will be locked! It is now the dealers turn! The dealer draws a new card and adds it to their score if their score is under 17.
 
-* [x] CRUD
-* [x] Show all todos
-* [x] Show all completed todos
-* [x] Validation on inputs 
-* [x] Sorted tasks by created
-* [x] Cool UI
-* [x] Delete all completed todos
-* [ ] Multiple laguage choices
-
-## Instructions
+Good luck!
 
 
 ## Tags
-* [V1.1](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V1.1)
-* [V1.0](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V1.0)
-* [V0.6](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.6)
-* [V0.5](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.5)
-* [V0.4](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.4)
-* [V0.3](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V.3)
-* [V0.2](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.2)
-* [V0.1](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.1)
+* #### [V1.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.1)
+* #### [V1.0](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.0)
+* #### [V0.10](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.10)
+* #### [V0.9](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.9)
+* #### [V0.8](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.8)
+* #### [V0.7](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.7)
+* #### [V0.6](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.6)
+* #### [V0.5](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.5)
+* #### [V0.4](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.4)
+* #### [V0.3](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.3)
+* #### [V0.2](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.2)
+* #### [V0.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.1)
 
 
 ## Changelog
+* #### [V1.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.1)
+* [x] Added a quick betting feature that eats cookies ;) 
+* #### [V1.0](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.0)
+* [x] Blackjack works now and aces is completed also added a results screen.
+* #### [V0.10](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.10)
+* [x] Made UI and discovered bugs in the aces (yikes...)
+* #### [V0.9](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.9)
+* [x] More progress on aces and some import/export changes. 
+* #### [V0.8](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.8)
+* [x] Progress on aces function.
+* #### [V0.7](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.7)
+* [x] Started checking for aces & made a stand function.
+* #### [V0.6](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.6)
+* [x] The Hit function work now.
+* #### [V0.5](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.5)
+* [x] Import & Export.
+* #### [V0.4](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.4)
+* [x] Full deck generation.
+* #### [V0.3](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.3)
+* [x] Partial deck.
+* #### [V0.2](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.2) 
+* [x] Started shuffling the deck.
+* #### [V0.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.1) 
+* Project created.
 
-### [V1.1](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V1.1) Features:
-* Delete all completed todos
-
-### [V1.0](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V1.0) Features:
-* First Release
-* Edit now works :D
-* Sorting by date created
-
-### [V0.6](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.6) Features:
-* New and improved complete todo feature
-
-### [V0.5](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.5) Features:
-* Complete todo 
-
-### [V0.4](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.4) Features:
-* Started on edit
-
-### [V0.3](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V.3) Features:
-* Made it pretty :D
-
-### [V0.2](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.2) Features:
-* Quick list feature & Delete
-
-### [V0.1](https://github.com/Kevin-Vetter/TODO-Webapp/releases/tag/V0.1) Features:
-* Project created
-
-# To-do
-* Do dk-DK option
+## To-do
+  * [ ] Broke counter for each time balance reaches under 0.
