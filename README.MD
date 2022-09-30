@@ -23,6 +23,7 @@ Good luck!
 
 
 ## Tags
+* #### [V1.2](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.2)
 * #### [V1.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.1)
 * #### [V1.0](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.0)
 * #### [V0.10](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V0.10)
