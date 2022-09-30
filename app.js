@@ -109,6 +109,7 @@ function FuckAce(hand){
 }
 function WinnerCheck(){
     RunningGame = false
+    FlipCard();
     PlayerScore = CheckScore(PlayerHand);
     DealerScore = CheckScore(DealerHand);
     if(!CheckBust(PlayerHand) && CheckBust(DealerHand)){
