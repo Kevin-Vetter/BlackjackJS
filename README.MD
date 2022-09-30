@@ -38,6 +38,8 @@ Good luck!
 
 
 ## Changelog
+* #### [V1.2](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.2)
+* [x] Made icons and updated readme & changed bet size.
 * #### [V1.1](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.1)
 * [x] Added a quick betting feature that eats cookies ;) 
 * #### [V1.0](https://github.com/Kevin-Vetter/BlackjackJS/releases/tag/V1.0)
@@ -65,3 +67,4 @@ Good luck!
 
 ## To-do
   * [ ] Broke counter for each time balance reaches under 0.
+  * [ ] Make a lot of pretty animations.
