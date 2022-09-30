@@ -7,6 +7,7 @@ var PlayerScore = 0;
 var RunningGame = false;
 var StoredPath;
 var BetAmount = 0;
+
 var Balance = function(){
         let decodedCookie = decodeURIComponent(document.cookie);
         if(decodedCookie != ""){
@@ -17,21 +18,22 @@ var Balance = function(){
             return Number(value[1]);
         }
           return Number(2000);
-};
+}; // Returns the balance from cookies, else 2000
 
 function UpdateBalance(newBalance){
     document.cookie = 'balance=' + newBalance;
     document.getElementById('balance').innerText = newBalance;
-}
+} // Updates the balance both in UI and cookies
 
-export function Bet(amount){
+function Bet(amount){
     if(amount <= Balance()){
         BetAmount = amount;
         document.getElementById('startScreen').style = 'display: none;';
         RunningGame = true;
     }
-}
+} // Takes a bet ammount from UI
 
+// Init some values
 var PlayerHand = function() {
     let hand = []
     for (let i = 0; i < 2; i++) {
@@ -40,7 +42,7 @@ var PlayerHand = function() {
     }
     DrawCard('playerCards',hand);
     return hand;
-}();
+}(); // Array that contains the cards the player holds
 CheckBust(PlayerHand);
 var DealerHand = function() {
     let hand = []
@@ -49,14 +51,15 @@ var DealerHand = function() {
         hand.push(pop);        
     }
     return hand;
-}();
+}(); // Array that contains the cards the dealer holds
 
+
+// -Free-flow code
 StoredPath = DealerHand[0].Path;
 DealerHand[0].Path = '/cards/back.png'
 UpdateBalance(Balance());
-
 DrawCard('dealerCards',DealerHand);
-
+// end init
 function DrawCard(id, hand){
 let div = document.getElementById(id);
 div.innerHTML = '';
@@ -68,7 +71,7 @@ div.innerHTML = '';
         img.setAttribute('style', 'border: medium solid black; border-radius:5px 5px 5px 5px;');
         div.appendChild(img);
     });
-}
+} // Draws a card to UI
 function DealerPlay(){
     DealerScore = CheckScore(DealerHand);
     while(DealerScore < 17){
@@ -78,11 +81,11 @@ function DealerPlay(){
     }
 
     WinnerCheck();
-}
+} // Dealer takes a card until they lose or have above 17
 function CheckBust(hand){
     let isBust = CheckScore(hand) > 21? true : false;
     return isBust
-}
+} // Cheks if a given hand would be over 21
 function CheckScore(hand){
     let score = 0;
     hand.forEach(card => {
@@ -98,7 +101,7 @@ function CheckScore(hand){
     else
         UpdateScore('dealerScore',score);
     return score;
-}
+} // Checks the score of a hand
 function FuckAce(hand){
     for(let card of hand){
         if(Aces.includes(card)){
@@ -106,7 +109,7 @@ function FuckAce(hand){
             card.Value = 1;
             return true;
         }};
-}
+} // Checks if ace rule applies
 function WinnerCheck(){
     RunningGame = false
     FlipCard();
@@ -132,8 +135,7 @@ function WinnerCheck(){
         EndGame('tied');
     }
 
-}
-
+} // Checks who the winner is
 function EndGame(state){
     setTimeout(() => {
 
@@ -142,17 +144,15 @@ function EndGame(state){
         document.getElementById('eds').innerText = DealerScore;
         document.getElementById('eps').innerText = PlayerScore;
         document.getElementById('result').innerText = state;}, 1500);
-}
-
+} // Ends the game
 function UpdateScore(id,score){
     document.getElementById(id).innerText = score;
-}
+} // Updates the score in UI
 function FlipCard(){
     DealerHand[0].Path = StoredPath;
     DrawCard('dealerCards',DealerHand);
-}
-
-export function Hit()
+} // Flips the dealers first card
+function Hit()
 {
     if(RunningGame){
         PlayerHand.push(Deck.pop());
@@ -166,13 +166,14 @@ export function Hit()
             WinnerCheck();
         }
     }
-}
-export function Stand(){
+} // Gives the player a new card
+function Stand(){
     if(RunningGame){
         FlipCard();
         DealerPlay();
         RunningGame = false;
     }
-}
+} // Locks the players hand and runs dealers play
 
-export {RunningGame};
+// Exports
+export {Hit,Stand,Bet,RunningGame};
