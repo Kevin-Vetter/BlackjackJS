@@ -24,7 +24,7 @@ var Deck = function()
 
     deck = ShuffleRandom(deck);
     return deck;
-}();
+}(); // Generates the deck
 var Aces = function (){
     let aces = []
     Deck.forEach(card => {
@@ -33,7 +33,7 @@ var Aces = function (){
         }
     });
     return aces;
-}();
+}(); // Registers the aces
 
 function ShuffleRandom(arr){
     let rnd = Math.floor(Math.random() * 100) +1;
@@ -41,7 +41,7 @@ function ShuffleRandom(arr){
         arr = Shuffle(arr);
     }
     return arr;
-}
+} // Randdom ammout of shffles
 function Shuffle(arr){
     let shuffledArr = [];
     let length = arr.length;
@@ -52,6 +52,7 @@ function Shuffle(arr){
         shuffledArr.push(removed[0]);
     }
     return shuffledArr;
-}
+} // Shuffles deck
 
+// Export
 export {Deck, Aces};
