@@ -16,11 +16,11 @@
     <div class="center position-absolute text-center fs-2 top-50 start-50 translate-middle" id="startScreen">
        
         <p class="mt-5">Choose Bet!</p>
-        <div class="d-flex">
-            <button class="btn btn-outline-primary center" onclick="window.Bet(10)">10</button>
-            <button class="btn btn-outline-primary center" onclick="window.Bet(50)">50</button>
-            <button class="btn btn-outline-primary center" onclick="window.Bet(100)">100</button>
-            <button class="btn btn-outline-primary center" onclick="window.Bet(1000)">1000</button>
+        <div class="d-flex" id="bets">
+            <img class="center" src="/buttons/25.png"onclick="window.Bet(25)">
+            <img class="center" src="/buttons/50.png"onclick="window.Bet(50)">
+            <img class="center" src="/buttons/100.png"onclick="window.Bet(100)">
+            <img class="center" src="/buttons/500.png"onclick="window.Bet(500)">
         </div>
     </div>
         
@@ -101,7 +101,7 @@
         border-radius: 5px 5px 5px 5px ;
     }
     #endScreen :hover{cursor: pointer;}
-
+    #bets > :hover{cursor: pointer;}
     .fade-in {
 	animation: fade-in 2s linear both;
     }

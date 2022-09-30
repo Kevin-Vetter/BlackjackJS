@@ -12,12 +12,12 @@ var Balance = function(){
         let decodedCookie = decodeURIComponent(document.cookie);
         if(decodedCookie != ""){
             let value = decodedCookie.split('=');
-            if(Number(value[1] < 10)){
-                return Number(2000);
+            if(Number(value[1] < 25)){
+                return Number(1000);
             }
             return Number(value[1]);
         }
-          return Number(2000);
+          return Number(1000);
 }; // Returns the balance from cookies, else 2000
 
 function UpdateBalance(newBalance){
